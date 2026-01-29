@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Selu383.SP26.Api.Controllers;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,10 +10,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//work on connecting Database to App Service, commented because throwing an error
+/*builder.Services.AddDbContext<Datacontext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Datacontext") ?? throw new InvalidOperationException("Connection string 'Datacontext' not found.")));
+*/
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+//if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
