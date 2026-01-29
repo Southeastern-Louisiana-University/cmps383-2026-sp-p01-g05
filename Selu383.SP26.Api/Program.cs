@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+//using Microsoft.EntityFrameworkCore;
 using Selu383.SP26.Api.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
