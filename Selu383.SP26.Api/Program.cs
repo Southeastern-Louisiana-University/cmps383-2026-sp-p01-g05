@@ -1,4 +1,4 @@
-//using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Selu383.SP26.Api.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,9 +11,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //work on connecting Database to App Service, commented because throwing an error
-/*builder.Services.AddDbContext<Datacontext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Datacontext") ?? throw new InvalidOperationException("Connection string 'Datacontext' not found.")));
-*/
+builder.Services.AddDbContext<DataContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DataContext") ?? throw new InvalidOperationException("Connection string 'Datacontext' not found.")));
+
 
 var app = builder.Build();
 
