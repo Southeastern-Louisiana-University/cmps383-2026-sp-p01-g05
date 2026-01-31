@@ -12,14 +12,14 @@ namespace Selu383.SP26.Api;
         var db = scope.ServiceProvider.GetRequiredService<DataContext>();
         await db.Database.MigrateAsync();
     }
-
+    EnsureCreatedAsync();
     host.Run();
-}
-EnsureCreatedAsync();*/
+}*/
+
 public class DataContext : DbContext
-        {
-            public DataContext(DbContextOptions<DataContext> options) : base(options)
-            {
-            }
-        }
+{
+    public DataContext(DbContextOptions<DataContext> options) : base(options)
+    {
+    }
+}
 

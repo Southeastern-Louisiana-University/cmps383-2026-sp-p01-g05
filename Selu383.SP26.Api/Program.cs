@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Selu383.SP26.Api.Controllers;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,7 +37,9 @@ app.Run();//
 
 //see: https://docs.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-8.0
 // Hi 383 - this is added so we can test our web project automatically
-/*public static async Task Main(string[] args)
+
+/*context.Database.MigrateAsync();
+static async Task Main(string[] args)
 {
     var host = CreateHostBuilder(args).Build();
 
