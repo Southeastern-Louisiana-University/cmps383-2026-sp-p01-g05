@@ -1,15 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-//using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace Selu383.SP26.Api.Controllers;
 
 //work on connecting database to app service, commented because it's throwing an error
-/*public class Datacontext : DbContext
-{
-    public Datacontext(DbContextOptions<DataContext> options) : base(options)
-    {
-    }
-}*/
+
 
 [ApiController]
 [Route("[controller]")]
