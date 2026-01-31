@@ -36,6 +36,19 @@ app.Run();
 
 //see: https://docs.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-8.0
 // Hi 383 - this is added so we can test our web project automatically
+/*public static async Task Main(string[] args)
+{
+    var host = CreateHostBuilder(args).Build();
+
+    using (var scope = host.Services.CreateScope())
+    {
+        var db = scope.ServiceProvider.GetRequiredService<DataContext>();
+        await db.Database.MigrateAsync();
+    }
+
+    host.Run();
+}*/
+
 public class DataContext : DbContext
 {
     public DataContext(DbContextOptions<DataContext> options) : base(options)
