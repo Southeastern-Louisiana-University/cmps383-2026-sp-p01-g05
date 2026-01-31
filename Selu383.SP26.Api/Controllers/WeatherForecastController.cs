@@ -3,13 +3,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Selu383.SP26.Api.Controllers;
 
-//work on connecting database to app service, commented because it's throwing an error
-
-
 [ApiController]
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
 {
+    /*private readonly DataContext _context;
+
+    public WeatherForecastController(DataContext context)
+    {
+        _context = context;
+    }*/
+
     private static readonly string[] Summaries = new[]
     {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"

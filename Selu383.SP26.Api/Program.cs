@@ -10,9 +10,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+
 //work on connecting Database to App Service, commented because throwing an error
 builder.Services.AddDbContext<DataContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DataContext") ?? throw new InvalidOperationException("Connection string 'Datacontext' not found.")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DataContext") ?? throw new InvalidOperationException("Connection string 'DataContext' not found.")));
 
 
 var app = builder.Build();
@@ -34,4 +36,11 @@ app.Run();
 
 //see: https://docs.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-8.0
 // Hi 383 - this is added so we can test our web project automatically
+public class DataContext : DbContext
+{
+    public DataContext(DbContextOptions<DataContext> options) : base(options)
+    {
+    }
+}
 public partial class Program { }
+
