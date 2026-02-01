@@ -20,6 +20,12 @@ builder.Services.AddDbContext<DataContext>(options =>
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<DataContext>();
+    await db.Database.MigrateAsync();
+}
+
 // Configure the HTTP request pipeline.
 //if (app.Environment.IsDevelopment())
 {
@@ -39,16 +45,7 @@ app.Run();//
 // Hi 383 - this is added so we can test our web project automatically
 
 
-    var host = CreateHostBuilder(args).Build();
-
-    using (var scope = host.Services.CreateScope())
-    {
-        var db = scope.ServiceProvider.GetRequiredService<DataContext>();
-        await db.Database.MigrateAsync();
-    }
-
-    host.Run();
-
+//var host = CreateHostBuilder(args).Build();
 
 public class DataContext : DbContext
 {
