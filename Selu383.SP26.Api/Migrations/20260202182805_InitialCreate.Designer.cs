@@ -11,7 +11,7 @@ using Selu383.SP26.Api.Data;
 namespace Selu383.SP26.Api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20260130224231_InitialCreate")]
+    [Migration("20260202182805_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

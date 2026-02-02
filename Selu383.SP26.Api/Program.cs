@@ -21,6 +21,32 @@ using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<DataContext>();
     db.Database.Migrate();
+
+    // Ensure seed data exists (for test environments where ClearData() removes it)
+    if (!db.Locations.Any())
+    {
+        db.Locations.AddRange(
+            new Selu383.SP26.Api.Entities.Location
+            {
+                Name = "Caffeinated Lions Downtown",
+                Address = "123 Main Street, Hammond, LA 70401",
+                TableCount = 15
+            },
+            new Selu383.SP26.Api.Entities.Location
+            {
+                Name = "Caffeinated Lions Uptown",
+                Address = "456 Oak Avenue, Hammond, LA 70403",
+                TableCount = 20
+            },
+            new Selu383.SP26.Api.Entities.Location
+            {
+                Name = "Caffeinated Lions Lakeside",
+                Address = "789 Lake Drive, Mandeville, LA 70448",
+                TableCount = 12
+            }
+        );
+        db.SaveChanges();
+    }
 }
 
 // Configure the HTTP request pipeline.
