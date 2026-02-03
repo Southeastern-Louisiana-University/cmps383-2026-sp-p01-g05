@@ -1,7 +1,9 @@
-using System.Net;
 using FluentAssertions;
 using Selu383.SP26.Tests.Dtos;
 using Selu383.SP26.Tests.Helpers;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Json;
 
 namespace Selu383.SP26.Tests.Controllers;
 
@@ -146,7 +148,7 @@ public class LocationsControllerTests
         var httpResponse = await webClient.PostAsJsonAsync("/api/locations", request);
 
         //assert
-        httpResponse.StatusCode.Should().Be(HttpStatusCode.BadRequest, "we expect an HTTP 400 when calling POST /api/locations with table count < 1");
+         httpResponse.StatusCode.Should().Be(HttpStatusCode.BadRequest, "we expect an HTTP 400 when calling POST /api/locations with table count < 1");
     }
 
     [TestMethod]
@@ -215,6 +217,7 @@ public class LocationsControllerTests
 
         //act
         var httpResponse = await webClient.PutAsJsonAsync($"/api/locations/{request.Id}", request);
+
 
         //assert
         httpResponse.StatusCode.Should().Be(HttpStatusCode.BadRequest, "we expect an HTTP 400 when calling PUT /api/locations/{id} with a name that is too long");
