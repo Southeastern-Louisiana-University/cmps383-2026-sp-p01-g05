@@ -20,12 +20,12 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<DataContext>();
-    db.Database.Migrate();
+    await db.Database.MigrateAsync();
 
     // Ensure seed data exists (for test environments where ClearData() removes it)
-    if (!db.Locations.Any())
+    if (!await db.Locations.AnyAsync())
     {
-        db.Locations.AddRange(
+        await db.Locations.AddRangeAsync (
             new Selu383.SP26.Api.Entities.Location
             {
                 Name = "Caffeinated Lions Downtown",
@@ -45,7 +45,7 @@ using (var scope = app.Services.CreateScope())
                 TableCount = 12
             }
         );
-        db.SaveChanges();
+        await db.SaveChangesAsync();
     }
 }
 
@@ -57,7 +57,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
 
 app.MapControllers();
